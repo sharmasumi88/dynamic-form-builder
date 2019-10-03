@@ -1,3 +1,6 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
 <?php
 /**
  * Created by PhpStorm.
@@ -64,6 +67,23 @@ $form = array(
                 ),
             ),
             array(
+                'type'=>'repeter',
+                'fields' => array(
+                    array(
+                        'id'=>'rshit',
+                        'type'=>'text',
+                        'class' =>'rshit',
+                        'value'=>'rshit',
+                    ),
+                    array(
+                        'id'=>'remail',
+                        'type'=>'email',
+                        'class' =>'remail',
+                        'value'=>'rhello@email.com',
+                    )
+                )
+            ),
+            array(
                 'id'=>'message',
                 'type'=>'textarea',
                 'class' =>'textarea-text',
@@ -82,3 +102,17 @@ $form = array(
 
 $formBuild = new form($form);
 $formBuild->render();
+
+?>
+
+<script>
+    $(document).ready(function () {
+        $("a.add-more").click(function() {
+            let rendonid = Math.random().toString(36).substring(7);
+            var element = $(this).prev();
+            var newElement = element.html();
+            $(this).before('<div class="rep-'+rendonid+'">'+newElement+'</div>');
+        });
+    })
+
+</script>
