@@ -13,6 +13,7 @@ require 'classes/fields/TypeTextarea.php';
 require 'classes/fields/TypeEmail.php';
 require 'classes/fields/TypeCheckbox.php';
 require 'classes/fields/TypeSelect.php';
+require 'classes/fields/Repeter.php';
 require 'classes/fields/TypeSubmit.php';
 
 abstract class Fields
@@ -69,6 +70,11 @@ abstract class Fields
                     $selectType->selectHtml($type);
                     $html[] = $selectType->selectHtml;
                     //$selectType->create($type);
+                    break;
+                case 'repeter':
+                    $repeterType = new Repeter;
+                    $repeterType->repeterHtml($type);
+                    $html[] = $repeterType->repeterHtml;
                     break;
                 case 'submit':
                     $submitType= new TypeSubmit;
