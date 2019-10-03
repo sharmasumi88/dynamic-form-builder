@@ -9,6 +9,7 @@
 class TypeSubmit extends Fields
 {
 
+    public $submitHtml;
     function __construct() {
 
         /* Do nothing here */
@@ -16,12 +17,12 @@ class TypeSubmit extends Fields
     }
 
 
-    public function create($field){
-
-        $textHtml = "<div class='submit-".$field['class']."'>";
-        $textHtml .= "<input type='submit' value='".$field['value']."' name='".$field['id']."'/>";
-        $textHtml .= "</div>";
-        return $textHtml;
+    public function __call($name,$field){
+        $field = $field[0];
+        $submitHtml = "<div class='submit-".$field['class']."'>";
+        $submitHtml .= "<input type='submit' value='".$field['value']."' name='".$field['id']."'/>";
+        $submitHtml .= "</div>";
+        $this->submitHtml = $submitHtml;
     }
 
 }

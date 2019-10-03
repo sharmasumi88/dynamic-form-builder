@@ -9,26 +9,28 @@
 class TypeSelect extends Fields
 {
 
+    public $selectHtml;
+
     function __construct() {
 
         /* Do nothing here */
 
     }
 
+    function __call($name,$prop){
+        $prop = $prop[0];
+        $selectHtml = "<div class='select-".$prop['class']."'>";
+        $selectHtml .= "<select class='select-".$prop['class']."' name='".$prop['id']."'>";
 
-    public function create($field){
-
-        $textHtml = "<div class='email-".$field['class']."'>";
-        $textHtml .= "<select class='email-".$field['class']."' name='".$field['id'].">";
-
-        foreach ($field['options'] as $key => $option){
-            $textHtml .= "<option value='".$key."' >".$option."</option>";
+        foreach ($prop['options'] as $key => $option){
+            $selectHtml .= "<option value='".$key."' >".$option."</option>";
 
         }
 
-        $textHtml .= "</select>";
-        $textHtml .= "</div>";
-        return $textHtml;
+        $selectHtml .= "</select>";
+        $selectHtml .= "</div>";
+        $this->selectHtml = $selectHtml;
+
     }
 
 

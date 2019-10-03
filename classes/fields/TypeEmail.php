@@ -8,7 +8,7 @@
 
 class TypeEmail extends Fields
 {
-
+    public $emailHtml;
     function __construct() {
 
         /* Do nothing here */
@@ -16,12 +16,12 @@ class TypeEmail extends Fields
     }
 
 
-    public function create($field){
-
-        $textHtml = "<div class='email-".$field['class']."'>";
-        $textHtml .= "<input type='email' value='".$field['value']."' name='".$field['id']."'/>";
-        $textHtml .= "</div>";
-        return $textHtml;
+     function __call($name,$field){
+         $field = $field[0];
+         $emailHtml = "<div class='email-".$field['class']."'>";
+         $emailHtml .= "<input type='email' value='".$field['value']."' name='".$field['id']."'/>";
+         $emailHtml .= "</div>";
+         $this->emailHtml =  $emailHtml;
     }
 
 

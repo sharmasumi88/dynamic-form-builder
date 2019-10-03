@@ -40,32 +40,40 @@ abstract class Fields
         foreach($fields['fields'] as $type){
             switch ($type['type']){
                 case 'text':
-                   $textType = new TypeText();
-                   $html[] = $textType->create($type);
+                   $textType = new TypeText;
+                   $textType->textHtml($type);
+                   $html[] = $textType->textHtml;
                     break;
                 case 'hidden':
-                    $hiddenType = new TypeHidden();
-                    $html[] = $hiddenType->create($type);
+                    $hiddenType = new TypeHidden;
+                    $hiddenType->hiddenHtml($type);
+                    $html[] = $hiddenType->hiddenHtml;
                     break;
                 case 'textarea':
-                    $textareaType= new TypeTextarea();
-                    $html[] = $textareaType->create($type);
+                    $textareaType= new TypeTextarea;
+                    $textareaType->textareaHtml($type);
+                    $html[] = $textareaType->textareaHtml;
                     break;
                 case 'email':
-                    $emailType= new TypeEmail();
-                    $html[] = $emailType->create($type);
+                    $emailType= new TypeEmail;
+                    $emailType->emailHtml($type);
+                    $html[] = $emailType->emailHtml;
                     break;
                 case 'checkbox':
-                    $checkboxType= new TypeCheckbox();
-                    $html[] = $checkboxType->create($type);
+                    $checkboxType= new TypeCheckbox;
+                    $checkboxType->checkboxHtml($type);
+                    $html[] = $checkboxType->checkboxHtml;
                     break;
                 case 'select':
-                    $selectType= new TypeSelect();
-                    $html[] = $selectType->create($type);
+                    $selectType = new TypeSelect;
+                    $selectType->selectHtml($type);
+                    $html[] = $selectType->selectHtml;
+                    //$selectType->create($type);
                     break;
                 case 'submit':
-                    $submitType= new TypeSubmit();
-                    $html[] = $submitType->create($type);
+                    $submitType= new TypeSubmit;
+                    $submitType->submitHtml($type);
+                    $html[] = $submitType->submitHtml;
                     break;
             }
         }
@@ -79,6 +87,8 @@ abstract class Fields
             $output .= $outputData;
         }
         $this->initForm($output);
+
+       // print_r($this);
         echo $this->output;
     }
 

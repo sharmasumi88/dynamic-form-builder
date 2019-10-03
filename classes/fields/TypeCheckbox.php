@@ -9,6 +9,7 @@
 class TypeCheckbox extends Fields
 {
 
+    public $checkboxHtml;
     function __construct() {
 
         /* Do nothing here */
@@ -16,16 +17,16 @@ class TypeCheckbox extends Fields
     }
 
 
-    public function create($field){
-
-        $textHtml = "<div class='email-".$field['class']."'>";
+     function __call($name,$field){
+         $field = $field[0];
+         $checkboxHtml = "<div class='checkbox-".$field['class']."'>";
             foreach ($field['options'] as $key => $option){
-                $textHtml .= "<label>".$option."</label>";
-                $textHtml .= "<input type='checkbox' value='".$key."' name='".$field['id']."[]'/>";
+                $checkboxHtml .= "<label>".$option."</label>";
+                $checkboxHtml .= "<input type='checkbox' value='".$key."' name='".$field['id']."[]'/>";
             }
 
-        $textHtml .= "</div>";
-        return $textHtml;
+         $checkboxHtml .= "</div>";
+         $this->checkboxHtml = $checkboxHtml;
     }
 
 

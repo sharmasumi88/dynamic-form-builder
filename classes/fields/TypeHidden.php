@@ -9,7 +9,7 @@
 class TypeHidden extends Fields
 {
 
-
+    public $hiddenHtml;
     function __construct() {
 
         /* Do nothing here */
@@ -17,12 +17,12 @@ class TypeHidden extends Fields
     }
 
 
-    public function create($field){
-
-        $textHtml = "<div class='hidden-".$field['class']."'>";
-        $textHtml .= "<input type='hidden' value='".$field['value']."' name='".$field['id']."'/>";
-        $textHtml .= "</div>";
-        return $textHtml;
+     function __call($name,$field){
+         $field = $field[0];
+         $hiddenHtml = "<div class='hidden-".$field['class']."'>";
+         $hiddenHtml .= "<input type='hidden' value='".$field['value']."' name='".$field['id']."'/>";
+         $hiddenHtml .= "</div>";
+         $this->hiddenHtml = $hiddenHtml;
     }
 
 
